@@ -32,9 +32,13 @@ CREATE TABLE IF NOT EXISTS `student_class` (
     CONSTRAINT FOREIGN KEY (class_id)
         REFERENCES class (id)
 );
-INSERT INTO `student_cms_plusplus`.`student` (`id`,`name`,`mssv`,`password`,`phone`,`address`,`age`,`email`,`created_timestamp`,`last_updated_timestamp`) VALUES ('1','Trần Nhật Hoàng','1E01','123456','0329609321','33 Nguyễn Công Trứ','18','trannhathoang8678@gmail.com',CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP());
-INSERT INTO `student_cms_plusplus`.`student` (`id`,`name`,`mssv`,`password`,`age`,`email`,`created_timestamp`,`last_updated_timestamp`) VALUES ('2','Nguyễn Trần Vinh ','1E02','123456','18','vinhnt@gmail.com',CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP());
-INSERT INTO `student_cms_plusplus`.`class` (`id`,`name`,`major`,`total_student`,`teacher_name`,`created_timestamp`,`last_updated_timestamp`) VALUES ('1','JVBE','JAVA BACKEND','12','Nguyễn Xuân Kiểm',CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP());
-INSERT INTO `student_cms_plusplus`.`class` (`id`,`name`,`major`,`created_timestamp`,`last_updated_timestamp`) VALUES ('2','JVFT','JAVA FULLSTACK',CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP());
+INSERT INTO `student_cms_plusplus`.`student` (`id`,`name`,`mssv`,`password`,`phone`,`address`,`age`,`email`,`created_timestamp`,`last_updated_timestamp`)
+    VALUES ('1','Trần Nhật Hoàng','1E01','123456','0329609321','33 Nguyễn Công Trứ','18','trannhathoang8678@gmail.com',CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP());
+INSERT INTO `student_cms_plusplus`.`student` (`id`,`name`,`mssv`,`password`,`age`,`email`,`created_timestamp`,`last_updated_timestamp`)
+    VALUES ('2','Nguyễn Trần Vinh ','1E02','123456','18','vinhnt@gmail.com',CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP());
+INSERT INTO `student_cms_plusplus`.`class` (`id`,`name`,`major`,`total_student`,`teacher_name`,`created_timestamp`,`last_updated_timestamp`)
+    VALUES ('1','JVBE','JAVA BACKEND','12','Nguyễn Xuân Kiểm',CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP());
+INSERT INTO `student_cms_plusplus`.`class` (`id`,`name`,`major`,`created_timestamp`,`last_updated_timestamp`)
+    VALUES ('2','JVFT','JAVA FULLSTACK',CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP());
 INSERT INTO `student_cms_plusplus`.`student_class` (`student_id`,`class_id`) VALUES ('1','1');
 INSERT INTO `student_cms_plusplus`.`student_class` (`student_id`,`class_id`) VALUES ('2','2');
