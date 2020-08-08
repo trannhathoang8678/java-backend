@@ -10,7 +10,7 @@ public class Application {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://127.0.0.1:3306/db2", "root", "concoduong1@");
+                    "jdbc:mysql://127.0.0.1:3306/db2", "root", "hoangnt");
 //here sonoo is database name, root is username and password
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM db2.student");
