@@ -11,7 +11,7 @@ CREATE TABLE `store_cms_plusplus`.`laptop` (
   `cpu` VARCHAR(45) NULL,
   `ssd` VARCHAR(45) NULL,
   `hdd` VARCHAR(45) NULL,
-  `price` FLOAT NULL,
+  `price` DECIMAL NULL,
   `card` VARCHAR(45) NULL,
   `screen_resolution` VARCHAR(45) NULL,
   `screen_size` FLOAT NULL,

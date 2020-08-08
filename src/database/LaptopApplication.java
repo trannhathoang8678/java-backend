@@ -15,11 +15,11 @@ public class LaptopApplication {
         System.out.println("MySQL JDBC Registered");
         Connection connection = null;
         try {
-            Connection connection = DriverManager.getConnection("jdbc::mysql://127.0.0.1:3306/store_cms_plusplus","root","hoangnt");
+             connection = DriverManager.getConnection("jdbc::mysql://127.0.0.1:3306/store_cms_plusplus","root","hoangnt");
             System.out.println("SQL connection to Database established!");
             connection.close();
         }
-        catch (SQLException)
+        catch (SQLException e)
         {
             System.out.println("Connection Fail! Exception: " + e);
             return;
