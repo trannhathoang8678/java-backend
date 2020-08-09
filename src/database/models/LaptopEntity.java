@@ -160,4 +160,8 @@ public class LaptopEntity {
     public void setLast_updated_timestamp(Timestamp last_updated_timestamp) {
         this.last_updated_timestamp = last_updated_timestamp;
     }
+    public String toString()
+    {
+        return name;
+    }
 }
