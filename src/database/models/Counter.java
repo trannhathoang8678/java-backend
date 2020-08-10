@@ -27,4 +27,9 @@ public class Counter {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+    @Override
+    public String toString()
+    {
+        return("Make: " + maker + " , " + "Quantity: " + quantity);
+    }
 }
