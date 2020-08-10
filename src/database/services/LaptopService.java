@@ -2,6 +2,7 @@ package database.services;
 
 import database.models.Counter;
 import database.models.LaptopEntity;
+import database.models.Statistic;
 
 import java.math.BigDecimal;
 import java.sql.Connection;
@@ -96,6 +97,27 @@ public class LaptopService {
 //            System.out.println(counter.toString());
 //        for test
         return counters;
+    }
+    public List<Statistic> getStatisticByMaker() {
+        List<Statistic> statistics = new ArrayList<>();
+        String sql = "SELECT `maker`,SUM(sold),SUM(price) FROM laptop WHERE `maker` IS NOT NULL GROUP BY maker ;";
+        try {
+            Statistic statistic;
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+            while (rs.next()) {
+                statistic = new Statistic(rs.getString(1),rs.getInt(2), rs.getBigDecimal(3));
+                statistics.add(statistic);
+            }
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+//        for(Statistic statistic : statistics)
+//            System.out.println(statistic.toString());
+     //   for test
+        return statistics;
     }
 
     public void printLaptopList(List<LaptopEntity> laptopEntities) {

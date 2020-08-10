@@ -2,18 +2,18 @@ package database.models;
 
 import java.math.BigDecimal;
 
-public class Static {
+public class Statistic {
     private String maker;
     private int sold;
     private BigDecimal totalMoney;
 
-    public Static(String maker, int sold, BigDecimal totalMoney) {
+    public Statistic(String maker, int sold, BigDecimal totalMoney) {
         this.maker = maker;
         this.sold = sold;
         this.totalMoney = totalMoney;
     }
 
-    public Static() {
+    public Statistic() {
     }
 
     public String getMaker() {

@@ -22,9 +22,9 @@ public class LaptopApplication {
             System.out.println("SQL connection to Database established!");
             LaptopService laptopService = new LaptopService(connection);
           //  laptopService.printLaptopList(laptopService.searchLaptop(BigDecimal.valueOf(7290000.01),BigDecimal.valueOf(18890000),null,null,null,null,null,null));
-            laptopService.printLaptopList(laptopService.sortBySoldLaptop("DESC"));
+          //  laptopService.printLaptopList(laptopService.sortBySoldLaptop("DESC"));
           //  laptopService.printLaptopList(laptopService.sortBySoldLaptop("ASC"));
-            laptopService.getCounterByMaker();
+          //  laptopService.getStatisticByMaker();
             connection.close();
         }
         catch (SQLException e)
