@@ -62,8 +62,11 @@ public class LaptopService {
         return excuvateQuerySQLForLaptop(sql);
     }
 
-    public List<LaptopEntity> searchLaptop(BigDecimal fromPrice, BigDecimal toPrice, String maker, String screen_size, String ram, String cpu, String type, String card) {
+    public List<LaptopEntity> searchLaptop(String name,BigDecimal fromPrice, BigDecimal toPrice, String maker, String screen_size, String ram, String cpu, String type, String card) {
         String sql = "SELECT * FROM laptop WHERE TRUE";
+        if (name != null) {
+            sql += " AND name ='" + name + "'";
+        }
         if (fromPrice != null) {
             sql += " AND price >= " + fromPrice;
         }
@@ -133,7 +136,16 @@ public class LaptopService {
         //   for test
         return statistics;
     }
-
+    public void updateSoldForLaptop(int id,int sold)
+    {
+        String sql = "UPDATE laptop SET sold = " + sold  + " WHERE id = " + id;
+        try {
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     public void printLaptopList(List<LaptopEntity> laptopEntities) {
         if (laptopEntities == null) {
             System.out.println("There is no laptop suitable");

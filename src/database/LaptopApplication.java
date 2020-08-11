@@ -25,8 +25,11 @@ public class LaptopApplication {
           //  laptopService.printLaptopList(laptopService.sortBySoldLaptop("DESC"));
           //  laptopService.printLaptopList(laptopService.sortBySoldLaptop("ASC"));
           //  laptopService.getStatisticByMaker();
-            laptopService.insertLaptopToDB(1,"hello","hello","hello","hello","hello","hello","hello","hello",
-                    BigDecimal.valueOf(232.22),"hello","hello",23.12f,12);
+//            laptopService.insertLaptopToDB(1,"hello","hello","hello","hello","hello","hello","hello","hello",
+//                    BigDecimal.valueOf(232.22),"hello","hello",23.12f,12);
+//            laptopService.printLaptopList(laptopService.searchLaptop("hello",null,null,null,null,null,null,null
+//                    ,null));
+            laptopService.updateSoldForLaptop(6,13);
             connection.close();
         }
         catch (SQLException e)
