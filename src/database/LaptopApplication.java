@@ -25,6 +25,8 @@ public class LaptopApplication {
           //  laptopService.printLaptopList(laptopService.sortBySoldLaptop("DESC"));
           //  laptopService.printLaptopList(laptopService.sortBySoldLaptop("ASC"));
           //  laptopService.getStatisticByMaker();
+            laptopService.insertLaptopToDB(1,"hello","hello","hello","hello","hello","hello","hello","hello",
+                    BigDecimal.valueOf(232.22),"hello","hello",23.12f,12);
             connection.close();
         }
         catch (SQLException e)

@@ -22,6 +22,23 @@ public class LaptopService {
     public LaptopService() {
     }
 
+    public void insertLaptopToDB(int id, String name, String url, String maker, String type, String ram, String cpu,
+                         String ssd, String hdd, BigDecimal price, String card, String screen_resolution, Float screen_size,
+                         int sold) {
+
+        String sql = "INSERT INTO laptop (name,url,maker,type,ram,cpu,ssd,hdd,price,card,screen_resolution,screen_size,sold) VALUES (" +
+                 "'" + name + "','" + url +
+                "','" + maker + "','" + type + "','" + ram + "','" + cpu + "','" + ssd + "','" + hdd + "'," +
+                 price + ",'" + card + "','" + screen_resolution + "','" + screen_size + "'," + sold + ");";
+        try {
+            Statement statement = connection.createStatement();
+             statement.executeUpdate(sql);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public List<LaptopEntity> excuvateQuerySQLForLaptop(String sql) {
         LaptopEntity laptopEntity;
         List<LaptopEntity> laptopEntities = new ArrayList<>();
@@ -31,7 +48,7 @@ public class LaptopService {
             while (rs.next()) {
                 laptopEntity = new LaptopEntity(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
                         rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getBigDecimal(10), rs.getString(11),
-                        rs.getString(12), rs.getString(13), rs.getInt(14), rs.getTimestamp(15), rs.getTimestamp(16));
+                        rs.getString(12), rs.getFloat(13), rs.getInt(14), rs.getTimestamp(15), rs.getTimestamp(16));
                 laptopEntities.add(laptopEntity);
             }
         } catch (SQLException e) {
@@ -88,9 +105,7 @@ public class LaptopService {
                 counter = new Counter(rs.getString(1), rs.getInt(2));
                 counters.add(counter);
             }
-        }
-        catch (SQLException e)
-        {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 //        for(Counter counter : counters)
@@ -98,6 +113,7 @@ public class LaptopService {
 //        for test
         return counters;
     }
+
     public List<Statistic> getStatisticByMaker() {
         List<Statistic> statistics = new ArrayList<>();
         String sql = "SELECT `maker`,SUM(sold),SUM(price) FROM laptop WHERE `maker` IS NOT NULL GROUP BY maker ;";
@@ -106,17 +122,15 @@ public class LaptopService {
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery(sql);
             while (rs.next()) {
-                statistic = new Statistic(rs.getString(1),rs.getInt(2), rs.getBigDecimal(3));
+                statistic = new Statistic(rs.getString(1), rs.getInt(2), rs.getBigDecimal(3));
                 statistics.add(statistic);
             }
-        }
-        catch (SQLException e)
-        {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 //        for(Statistic statistic : statistics)
 //            System.out.println(statistic.toString());
-     //   for test
+        //   for test
         return statistics;
     }
 

@@ -6,11 +6,12 @@ import java.sql.Timestamp;
 public class LaptopEntity {
     private int id, sold;
     private BigDecimal price;
-    private String name, url, maker, type, ram, cpu, ssd, hdd, card, screen_resolution, screen_size;
+    private float screen_size;
+    private String name, url, maker, type, ram, cpu, ssd, hdd, card, screen_resolution;
     private Timestamp created_timestamp, last_updated_timestamp;
 
     public LaptopEntity(int id, String name, String url, String maker, String type, String ram, String cpu,
-                        String ssd, String hdd, BigDecimal price, String card, String screen_resolution, String screen_size,
+                        String ssd, String hdd, BigDecimal price, String card, String screen_resolution, Float screen_size,
                         int sold, Timestamp created_timestamp, Timestamp last_updated_timestamp) {
         this.id = id;
         this.name = name;
@@ -137,11 +138,11 @@ public class LaptopEntity {
         this.screen_resolution = screen_resolution;
     }
 
-    public String getScreen_size() {
+    public Float getScreen_size() {
         return screen_size;
     }
 
-    public void setScreen_size(String screen_size) {
+    public void setScreen_size(Float screen_size) {
         this.screen_size = screen_size;
     }
 
