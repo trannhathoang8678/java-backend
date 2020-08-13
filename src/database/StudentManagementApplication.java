@@ -1,13 +1,12 @@
 package database;
 
-import database.services.LaptopService;
-import database.services.StudentService;
+import database.services.StudentManageService;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class StudentManagement {
+public class StudentManagementApplication {
     public static void main(String[] args) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -20,10 +19,11 @@ public class StudentManagement {
         try {
             connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/manage_student","root","hoangnt");
             System.out.println("SQL connection to Database established!");
-            StudentService studentService = new StudentService(connection);
-//            studentService.setDefaultToNoOfStudentsInDepartment();
-            studentService.turnOffSafeMode();
-            studentService.updateNoOfStudentsInDepartment();
+            StudentManageService studentManageService = new StudentManageService(connection);
+//            studentManageService.setDefaultToNoOfStudentsInDepartment();
+//            studentManageService.turnOffSafeMode();
+//            studentManageService.updateNoOfStudentsInDepartment();
+            studentManageService.updateAverageScore();
             connection.close();
         }
         catch (SQLException e)
