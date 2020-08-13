@@ -113,6 +113,5 @@ public class StudentManageService {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 }
