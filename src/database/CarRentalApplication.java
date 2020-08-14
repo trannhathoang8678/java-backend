@@ -22,6 +22,7 @@ public class CarRentalApplication {
             System.out.println("SQL connection to Database established!");
             CarRentalService carRentalService = new CarRentalService(connection);
             carRentalService.carLineOver5seats();
+            carRentalService.getProvidersInfo();
             connection.close();
         }
         catch (SQLException e)

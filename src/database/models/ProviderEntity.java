@@ -61,6 +61,6 @@ public class ProviderEntity {
     @Override
     public String toString() {
         return id_Provider + " : " + nameOfProvider + " at " + address + " with phone number " + phoneNumber
-                + "and tax number " + taxNumber;
+                + " and tax number " + taxNumber;
     }
 }
