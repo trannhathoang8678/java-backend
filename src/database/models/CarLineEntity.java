@@ -1,14 +1,16 @@
 package database.models;
 
+import org.omg.PortableInterceptor.ServerRequestInfo;
+
 public class CarLineEntity {
     private String carLine;
     private String carManufacter;
-    private int numberOfSeat;
+    private int numberOfSeats;
 
-    public CarLineEntity(String carLine, String carManufacter, int numberOfSeat) {
+    public CarLineEntity(String carLine, String carManufacter, int numberOfSeats) {
         this.carLine = carLine;
         this.carManufacter = carManufacter;
-        this.numberOfSeat = numberOfSeat;
+        this.numberOfSeats = numberOfSeats;
     }
 
     public CarLineEntity() {
@@ -31,10 +33,15 @@ public class CarLineEntity {
     }
 
     public int getNumberOfSeat() {
-        return numberOfSeat;
+        return numberOfSeats;
     }
 
     public void setNumberOfSeat(int numberOfSeat) {
-        this.numberOfSeat = numberOfSeat;
+        this.numberOfSeats = numberOfSeat;
+    }
+    @Override
+    public String toString()
+    {
+        return carLine + " by " + carManufacter + " with " + numberOfSeats + " seats";
     }
 }
