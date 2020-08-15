@@ -38,7 +38,7 @@ public class CarRentalService {
         return carLines;
     }
 
-    public List<ProviderEntity> getProvidersInfo() {
+    public List<ProviderEntity> getProvidersInfoInCondition() {
         List<ProviderEntity> providers = new ArrayList<>();
         ProviderEntity provider;
         try {
@@ -53,6 +53,24 @@ public class CarRentalService {
                 provider = new ProviderEntity(providerRS.getString(1), providerRS.getString(2)
                         , providerRS.getString(3), providerRS.getString(4), providerRS.getString(5));
                // System.out.println(provider.toString());
+                providers.add(provider);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return providers;
+    }
+    public List<ProviderEntity> getProvidersInfoInSort() {
+        List<ProviderEntity> providers = new ArrayList<>();
+        ProviderEntity provider;
+        try {
+            String getProvidersInfo = "SELECT * FROM NHACUNGCAP  ORDER BY TenNhaCC ASC , MaSoThue DESC;";
+            Statement statement = connection.createStatement();
+            ResultSet providerRS = statement.executeQuery(getProvidersInfo);
+            while (providerRS.next()) {
+                provider = new ProviderEntity(providerRS.getString(1), providerRS.getString(2)
+                        , providerRS.getString(3), providerRS.getString(4), providerRS.getString(5));
+                // System.out.println(provider.toString());
                 providers.add(provider);
             }
         } catch (SQLException e) {

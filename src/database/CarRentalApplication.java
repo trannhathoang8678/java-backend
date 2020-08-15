@@ -21,8 +21,9 @@ public class CarRentalApplication {
             connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/thue_xe_cms","root","hoangnt");
             System.out.println("SQL connection to Database established!");
             CarRentalService carRentalService = new CarRentalService(connection);
-            carRentalService.carLineOver5seats();
-            carRentalService.getProvidersInfo();
+//            carRentalService.carLineOver5seats();
+//            carRentalService.getProvidersInfoInCondition();
+            carRentalService.getProvidersInfoInSort();
             connection.close();
         }
         catch (SQLException e)
