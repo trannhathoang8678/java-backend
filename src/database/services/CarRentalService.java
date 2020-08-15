@@ -96,5 +96,19 @@ public class CarRentalService {
             e.printStackTrace();
         }
     }
+    public void printCaRManufacters()
+    {
+        String getCaRManufacters = "SELECT HangXe FROM DONGXE GROUP BY HangXe;" ;
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet carMRS = statement.executeQuery(getCaRManufacters);
+            while(carMRS.next())
+                System.out.println(carMRS.getString(1));
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+    }
 }
 

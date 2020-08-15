@@ -24,7 +24,8 @@ public class CarRentalApplication {
 //            carRentalService.carLineOver5seats();
 //            carRentalService.getProvidersInfoInCondition();
 //            carRentalService.getProvidersInfoInSort();
-            carRentalService.countProviderStartAtTime("2015-11-20");
+//            carRentalService.countProviderStartAtTime("2015-11-20");
+            carRentalService.printCaRManufacters();
             connection.close();
         }
         catch (SQLException e)
