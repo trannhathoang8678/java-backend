@@ -52,7 +52,7 @@ public class CarRentalService {
             while (providerRS.next()) {
                 provider = new ProviderEntity(providerRS.getString(1), providerRS.getString(2)
                         , providerRS.getString(3), providerRS.getString(4), providerRS.getString(5));
-                System.out.println(provider.toString());
+               // System.out.println(provider.toString());
                 providers.add(provider);
             }
         } catch (SQLException e) {
@@ -61,3 +61,4 @@ public class CarRentalService {
         return providers;
     }
 }
+
