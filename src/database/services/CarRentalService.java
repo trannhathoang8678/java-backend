@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+
 import java.util.List;
 
 public class CarRentalService {
@@ -29,7 +30,7 @@ public class CarRentalService {
             ResultSet carLineRS = statement.executeQuery(getcarLine);
             while (carLineRS.next()) {
                 carLineEntity = new CarLineEntity(carLineRS.getString(1), carLineRS.getString(2), carLineRS.getInt(3));
-//                System.out.println(carLineEntity.toString());
+                System.out.println(carLineEntity.toString());
                 carLines.add(carLineEntity);
             }
         } catch (SQLException e) {
@@ -39,6 +40,7 @@ public class CarRentalService {
     }
 
     public List<ProviderEntity> getProvidersInfoInCondition() {
+        //Toyota over 15000 or KIA over 20000
         List<ProviderEntity> providers = new ArrayList<>();
         ProviderEntity provider;
         try {
@@ -52,7 +54,7 @@ public class CarRentalService {
             while (providerRS.next()) {
                 provider = new ProviderEntity(providerRS.getString(1), providerRS.getString(2)
                         , providerRS.getString(3), providerRS.getString(4), providerRS.getString(5));
-               // System.out.println(provider.toString());
+                System.out.println(provider.toString());
                 providers.add(provider);
             }
         } catch (SQLException e) {
@@ -70,13 +72,29 @@ public class CarRentalService {
             while (providerRS.next()) {
                 provider = new ProviderEntity(providerRS.getString(1), providerRS.getString(2)
                         , providerRS.getString(3), providerRS.getString(4), providerRS.getString(5));
-                // System.out.println(provider.toString());
+                 System.out.println(provider.toString());
                 providers.add(provider);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return providers;
+    }
+    public void countProviderStartAtTime(String date)
+    {
+        String sql = "SELECT MaNhaCC,COUNT(*) FROM DANGKYCUNGCAP  WHERE NgayBatDauCungCap = '"
+                + date + "' GROUP BY MaNhaCC;";
+        System.out.println(sql);
+        try {
+
+            Statement statement = connection.createStatement();
+            ResultSet countRS = statement.executeQuery(sql);
+            while (countRS.next()) {
+                System.out.println(countRS.getString(1) + " " + countRS.getInt(2));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
 

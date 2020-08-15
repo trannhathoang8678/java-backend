@@ -23,7 +23,8 @@ public class CarRentalApplication {
             CarRentalService carRentalService = new CarRentalService(connection);
 //            carRentalService.carLineOver5seats();
 //            carRentalService.getProvidersInfoInCondition();
-            carRentalService.getProvidersInfoInSort();
+//            carRentalService.getProvidersInfoInSort();
+            carRentalService.countProviderStartAtTime("2015-11-20");
             connection.close();
         }
         catch (SQLException e)
