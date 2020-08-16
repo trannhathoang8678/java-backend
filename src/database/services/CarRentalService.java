@@ -135,7 +135,6 @@ public class CarRentalService {
         }
     }
     public List<ProviderEntity> getProvidersHiaceOrCerato() {
-        //Toyota over 15000 or KIA over 20000
         List<ProviderEntity> providers = new ArrayList<>();
         ProviderEntity provider;
         try {
@@ -143,6 +142,26 @@ public class CarRentalService {
                     "JOIN NHACUNGCAP Provider ON RP.MaNhaCC = Provider.MaNhaCC " +
                     "JOIN DONGXE CL ON CL.DONGXE = RP.DongXe " +
                     "  WHERE  CL.DongXe = 'Hiace' OR  CL.DongXe = 'Cerato' ";
+            Statement statement = connection.createStatement();
+            ResultSet providerRS = statement.executeQuery(getProvidersInfo);
+            while (providerRS.next()) {
+                provider = new ProviderEntity(providerRS.getString(1), providerRS.getString(2)
+                        , providerRS.getString(3), providerRS.getString(4), providerRS.getString(5));
+                System.out.println(provider.toString());
+                providers.add(provider);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return providers;
+    }
+    public List<ProviderEntity> getProvidersHaveNotProvided() {
+        List<ProviderEntity> providers = new ArrayList<>();
+        ProviderEntity provider;
+        try {
+            String getProvidersInfo = "SELECT P.* FROM NHACUNGCAP P\n" +
+                    "LEFT JOIN DANGKYCUNGCAP RP ON P.MaNhaCC = RP.MaNhaCC \n" +
+                    "WHERE RP.MaNhaCC IS NULL;" ;
             Statement statement = connection.createStatement();
             ResultSet providerRS = statement.executeQuery(getProvidersInfo);
             while (providerRS.next()) {
