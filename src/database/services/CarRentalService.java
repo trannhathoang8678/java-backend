@@ -110,5 +110,29 @@ public class CarRentalService {
             e.printStackTrace();
         }
     }
+    public void printAllProviders()
+    {
+        String getProvider = "SELECT P.MaNhaCC,P.TenNhaCC,P.DiaChi,P.MaSoThue,RP.MaDKCC,S.TenLoaiDV,Price.DonGia,\n" +
+                "S.TenLoaiDV,Price.DonGia,CL.HangXe,RP.NgayBatDauCungCap, RP.NgayKetThucCungCap FROM NHACUNGCAP P\n" +
+                "LEFT JOIN DANGKYCUNGCAP RP ON P.MaNhaCC = RP.MaNhaCC \n" +
+                "LEFT JOIN MUCPHI Price ON RP.MaMP = Price.MaMP\n" +
+                "LEFT JOIN DONGXE CL ON CL.DongXe = RP.DongXe \n" +
+                "LEFT JOIN LOAIDICHVU S ON S.MaLoaiDV = RP.MaLoaiDV ;" ;
+        try
+        {
+            Statement statement = connection.createStatement();
+            ResultSet providerRS = statement.executeQuery(getProvider);
+            while(providerRS.next()) {
+                System.out.print(providerRS.getString(1) );
+                for(int i = 2 ; i <= 12 ; i++)
+                    System.out.print("," + providerRS.getString(i));
+                System.out.println();
+            }
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+    }
 }
 
